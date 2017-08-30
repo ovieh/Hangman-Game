@@ -1,4 +1,4 @@
-var pies = ['rhubarb', 'pecan', 'apple', 'chocolate cream', 'banana cream', 'shoo fly'];
+var pies = ['rhubarb', 'pecan', 'apple', 'chocolate', 'pumpkin', 'shoo fly', 'lemon', 'blackberry', 'boysenberry', 'cherry', 'chiffon', 'shepherds'];
 var randomPick = pies[Math.floor(Math.random() * pies.length)];
 var wins = 0;
 var lettersRemaining = randomPick.length;
@@ -13,21 +13,20 @@ console.log(randomPick);
 
 // console.log(lettersRemaining);
 
-// while (guessCount >= l)
 function letterChecker(letter) {
-    if (randomPick.indexOf(letter) === -1) {
+    if (randomPick.indexOf(letter) === -1 && guessArray.indexOf(letter) === -1) {
         guessArray.push(letter);
+        var displayWrongGuess = document.getElementById("letterGuessed");
+        displayWrongGuess.innerHTML = guessArray.join(", ");
     } else {
         for (var i = 0; i < randomPick.length; i++) {
             if (letter === randomPick.charAt(i)) {
                 // console.log(randomPick.charAt(i));
                 dashArray[i] = randomPick.charAt(i);
             }
-
         }
     }
     placeHolder = dashArray.join(" ");
-
 }
 
 function createDashes(word) {
@@ -36,32 +35,31 @@ function createDashes(word) {
     }
 }
 
-// function letterGuessed(word){
-//     for(var i=0; i<letter.length;i++){
-//         if()
-//     }
+function display() {
+    var gameOutput = document.getElementById("game");
+    gameOutput.innerHTML = placeHolder;
+}
+
+// function winLoss(){
+//     if()
 // }
 
 createDashes(randomPick);
 //console.log(dashArray);
-console.log(placeHolder);
-
 document.onkeyup = function (event) {
     var userGuess = event.key;
-
     letterChecker(userGuess);
-    // console.log(dashArray);
+    display();
+
     console.log(placeHolder);
-    //     guessCount++;
-    // console.log(lettersGuessed);
 
 
 
 
-    var html =
-        "<p>You chose: " + randomPick + "</p>" +
-        "<p>You pressed: " + userGuess + "</p>"; // +
-    // "<p>" + dashArray + "</p>";
+    // var html =
+    //     "<p>You chose: " + randomPick + "</p>" +
+    //     "<p>You pressed: " + userGuess + "</p>"; // +
+    // // "<p>" + dashArray + "</p>";
 
-    document.querySelector("#game").innerHTML = html;
+    // document.querySelector("#game").innerHTML = html;
 }
