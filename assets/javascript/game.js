@@ -1,17 +1,21 @@
 var pies = ['rhubarb', 'pecan', 'apple', 'chocolate', 'pumpkin', 'shoo fly', 'lemon', 'blackberry', 'boysenberry', 'cherry', 'chiffon', 'shepherds'];
-var randomPick = pies[Math.floor(Math.random() * pies.length)];
+var randomPick = "";
 var wins = 0;
-var lettersRemaining = randomPick.length;
+var guessesRemaining = 0;
 var dashArray = [];
 var guessArray = [];
 var guessCount = 0;
 var placeHolder = "";
 
-console.log(randomPick);
-
+setWord();
+createDashes(randomPick);
 //So i need to figure out the length of each string in the array, then
 
-// console.log(lettersRemaining);
+
+function setWord() {
+    randomPick = pies[Math.floor(Math.random() * pies.length)];
+    guessesRemaining = randomPick.length;
+}
 
 function letterChecker(letter) {
     if (randomPick.indexOf(letter) === -1 && guessArray.indexOf(letter) === -1) {
@@ -40,26 +44,35 @@ function display() {
     gameOutput.innerHTML = placeHolder;
 }
 
-// function winLoss(){
-//     if()
-// }
+function winLoss() {
+    if (dashArray.join("") >= randomPick) {
+        alert("You won!");
+        reset();
+        wins++;
+        var displayWins = document.getElementById("wins");
+        displayWins.innerHTML = wins;
+     }
+    else if (guessArray.length === dashArray.length) {
+        alert("Sorry, you lost");
+        reset();
+    }
+}
 
-createDashes(randomPick);
-//console.log(dashArray);
+function reset() {
+    guessArray = [];
+    dashArray = [];
+    setWord();
+    createDashes(randomPick);
+}
+
+
 document.onkeyup = function (event) {
     var userGuess = event.key;
     letterChecker(userGuess);
+    guessesRemaining--;    
     display();
 
     console.log(placeHolder);
+    winLoss();
 
-
-
-
-    // var html =
-    //     "<p>You chose: " + randomPick + "</p>" +
-    //     "<p>You pressed: " + userGuess + "</p>"; // +
-    // // "<p>" + dashArray + "</p>";
-
-    // document.querySelector("#game").innerHTML = html;
 }
