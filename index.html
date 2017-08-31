@@ -8,19 +8,40 @@
     <title>Hangman Game</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
         crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
     <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
         crossorigin="anonymous"></script> -->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 
 <body>
-    <p>Wins <span id="wins"></span></p>
-    <!-- <p>Number of guesses remaining <div id="guessesRemaining"></div></p> -->
-  
-    <p><div id="game">Press any key to start playing!</div></p>
-    <p>Letters Guessed: <span id="letterGuessed"></span></p>
-    <p>Guesses Remaining: <span id="guesses"></span></p>
-    
+    <div class="container">
+        <div class="row">
+            <div class="col-12"> 
+                <div class="hello">Pie Hangman!</div>
+
+            </div>
+        </div>
+
+        <div class="row justify-content-around">
+            <div class="col-4 col-xs-12 addBorder">
+
+            </div>
+            <div class="col-4 col-xs-12 addBorder">
+                <p>Wins <span id="wins"></span></p>
+                <!-- <p>Number of guesses remaining <div id="guessesRemaining"></div></p> -->
+
+                <p>
+                    <div id="game">Press any key to start playing!</div>
+                </p>
+                <p>Letters Guessed: <span id="letterGuessed"></span></p>
+                <p>Guesses Remaining: <span id="guesses"></span></p>
+            </div>
+        </div>
+
+
+    </div>
+
     <script src="assets/javascript/game.js"></script>
 
 
