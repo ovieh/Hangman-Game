@@ -4,7 +4,6 @@ var wins = 0;
 var guessesRemaining = 0;
 var dashArray = [];
 var guessArray = [];
-var guessCount = 0;
 var placeHolder = "";
 
 setWord();
@@ -20,6 +19,7 @@ function setWord() {
 function letterChecker(letter) {
     if (randomPick.indexOf(letter) === -1 && guessArray.indexOf(letter) === -1) {
         guessArray.push(letter);
+        guessesRemaining--;
         var displayWrongGuess = document.getElementById("letterGuessed");
         displayWrongGuess.innerHTML = guessArray.join(", ");
     } else {
@@ -42,19 +42,23 @@ function createDashes(word) {
 function display() {
     var gameOutput = document.getElementById("game");
     gameOutput.innerHTML = placeHolder;
+    // guessesRemaining = randomPick.length;
+    var displayRemainingGuesses = document.getElementById("guesses");
+    displayRemainingGuesses.innerHTML = guessesRemaining;
+    console.log(guessesRemaining);
 }
 
 function winLoss() {
     if (dashArray.join("") >= randomPick) {
-        alert("You won!");
-        reset();
         wins++;
         var displayWins = document.getElementById("wins");
         displayWins.innerHTML = wins;
-     }
-    else if (guessArray.length === dashArray.length) {
-        alert("Sorry, you lost");
+        reset();     
+        alert("You won!");
+    } else if (guessArray.length === dashArray.length) {
         reset();
+        alert("Sorry, you lost");
+        
     }
 }
 
@@ -69,10 +73,8 @@ function reset() {
 document.onkeyup = function (event) {
     var userGuess = event.key;
     letterChecker(userGuess);
-    guessesRemaining--;    
-    display();
-
     console.log(placeHolder);
     winLoss();
+    display();
 
 }
