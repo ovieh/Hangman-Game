@@ -11,12 +11,12 @@ body {
     color: #b85b3f;
     font-family: 'Cookie', cursive;
     font-size: 140pt;
-    /* margin-bottom: 125px; */
-    text-align: center;
+    margin-bottom: 50px;
+    /* text-align: center; */
     
   }
   
-  /* .dashed-shadow {
+  .dashed-shadow {
     position: relative;
     top: 8px;
     left: 8px;
@@ -63,21 +63,15 @@ body {
     text-shadow: 3px 3px #e8e3c7;
   }
   
-  .hello {
-    font-family: 'Cookie', cursive;
-    font-size: 140pt;
-    margin-bottom: 125px;
-  }
-
   .dashed-shadow-text {
     font-size: 140pt;
-    line-height: 0.7em;
+    /* line-height: 0.7em; */
   }
   
   .shadow {
     font-size: 120pt;
-    line-height: 0.8em;
-  } */
+    /* line-height: 0.8em; */
+  }
   
   .addBorder {
       border-style: dashed;
