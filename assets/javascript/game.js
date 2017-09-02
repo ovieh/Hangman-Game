@@ -1,4 +1,4 @@
-var pies = ['rhubarb', 'pecan', 'apple', 'chocolate', 'pumpkin', 'shoo fly', 'lemon', 'blackberry', 'boysenberry', 'cherry', 'chiffon', 'shepherds'];
+var pies = ['rhubarb', 'pecan', 'apple', 'chocolate', 'pumpkin', 'lemon', 'blackberry', 'boysenberry', 'cherry', 'chiffon', 'shepherds'];
 var randomPick = "";
 var wins = 0;
 var guessesRemaining = 0;
@@ -48,17 +48,61 @@ function display() {
     console.log(guessesRemaining);
 }
 
+function displayPie(thisImg) {
+    switch (randomPick) {
+        case "apple":
+            document.getElementById('pieImage').src = "assets/images/apple.jpg";
+            break;
+        case "rhubarb":
+            document.getElementById('pieImage').src = "assets/images/rhubarb.jpg";
+            break;
+        case "pecan":
+            document.getElementById('pieImage').src = "assets/images/pecan.jpg";
+            break;
+        case "chocolate":
+            document.getElementById('pieImage').src = "assets/images/chocolate.jpg";
+            break;
+        case "pumpkin":
+            document.getElementById('pieImage').src = "assets/images/pumpkin.jpg";
+            break;
+        case "lemon":
+            document.getElementById('pieImage').src = "assets/images/lemon.jpg";
+            break;
+        case "rhubarb":
+            document.getElementById('pieImage').src = "assets/images/rhubarb.jpg";
+            break;
+        case "blackberry":
+            document.getElementById('pieImage').src = "assets/images/blackberry.jpg";
+            break;
+        case "boysenberry":
+            document.getElementById('pieImage').src = "assets/images/boysonberry.jpg";
+            break;
+        case "cherry":
+            document.getElementById('pieImage').src = "assets/images/cherry.jpg";
+            break;
+        case "chiffon":
+            document.getElementById('pieImage').src = "assets/images/chiffon.jpg";
+            break;
+        case "shepherds":
+            document.getElementById('pieImage').src = "assets/images/shepherds.jpg";
+            break;
+    }
+}
+
+console.log(randomPick);
+
 function winLoss() {
     if (dashArray.join("") >= randomPick) {
         wins++;
         var displayWins = document.getElementById("wins");
         displayWins.innerHTML = wins;
-        reset();     
+        displayPie();
+        reset();
         alert("You won!");
     } else if (guessArray.length === dashArray.length) {
         reset();
         alert("Sorry, you lost");
-        
+
     }
 }
 
@@ -67,8 +111,8 @@ function reset() {
     dashArray = [];
     setWord();
     createDashes(randomPick);
+    
 }
-
 
 document.onkeyup = function (event) {
     var userGuess = event.key;
@@ -76,5 +120,4 @@ document.onkeyup = function (event) {
     console.log(placeHolder);
     winLoss();
     display();
-
 }
