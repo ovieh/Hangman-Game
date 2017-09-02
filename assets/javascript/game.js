@@ -8,8 +8,6 @@ var placeHolder = "";
 
 setWord();
 createDashes(randomPick);
-//So i need to figure out the length of each string in the array, then
-
 
 function setWord() {
     randomPick = pies[Math.floor(Math.random() * pies.length)];
@@ -25,7 +23,6 @@ function letterChecker(letter) {
     } else {
         for (var i = 0; i < randomPick.length; i++) {
             if (letter === randomPick.charAt(i)) {
-                // console.log(randomPick.charAt(i));
                 dashArray[i] = randomPick.charAt(i);
             }
         }
@@ -42,10 +39,9 @@ function createDashes(word) {
 function display() {
     var gameOutput = document.getElementById("game");
     gameOutput.innerHTML = placeHolder;
-    // guessesRemaining = randomPick.length;
     var displayRemainingGuesses = document.getElementById("guesses");
     displayRemainingGuesses.innerHTML = guessesRemaining;
-    console.log(guessesRemaining);
+    console.log(guessesRemaining);//debugging code
 }
 
 function displayPie(thisImg) {
@@ -75,7 +71,7 @@ function displayPie(thisImg) {
             document.getElementById('pieImage').src = "assets/images/blackberry.jpg";
             break;
         case "boysenberry":
-            document.getElementById('pieImage').src = "assets/images/boysonberry.jpg";
+            document.getElementById('pieImage').src = "assets/images/boysenberry.jpg";
             break;
         case "cherry":
             document.getElementById('pieImage').src = "assets/images/cherry.jpg";
@@ -89,17 +85,15 @@ function displayPie(thisImg) {
     }
 }
 
-console.log(randomPick);
-
 function winLoss() {
-    if (dashArray.join("") >= randomPick) {
+    if (dashArray.join("") === randomPick) {
         wins++;
         var displayWins = document.getElementById("wins");
         displayWins.innerHTML = wins;
         displayPie();
         reset();
         alert("You won!");
-    } else if (guessArray.length === dashArray.length) {
+    } else if (guessesRemaining === 0) {
         reset();
         alert("Sorry, you lost");
 
@@ -111,7 +105,7 @@ function reset() {
     dashArray = [];
     setWord();
     createDashes(randomPick);
-    
+    letterChecker();
 }
 
 document.onkeyup = function (event) {
