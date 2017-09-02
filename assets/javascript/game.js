@@ -18,8 +18,7 @@ function letterChecker(letter) {
     if (randomPick.indexOf(letter) === -1 && guessArray.indexOf(letter) === -1) {
         guessArray.push(letter);
         guessesRemaining--;
-        var displayWrongGuess = document.getElementById("letterGuessed");
-        displayWrongGuess.innerHTML = guessArray.join(", ");
+        showGuess();
     } else {
         for (var i = 0; i < randomPick.length; i++) {
             if (letter === randomPick.charAt(i)) {
@@ -28,6 +27,11 @@ function letterChecker(letter) {
         }
     }
     placeHolder = dashArray.join(" ");
+}
+
+function showGuess(){
+    var wrongGuess = document.getElementById("letterGuessed");
+    wrongGuess.innerHTML = guessArray.join(", ");
 }
 
 function createDashes(word) {
@@ -105,13 +109,12 @@ function reset() {
     dashArray = [];
     setWord();
     createDashes(randomPick);
-    letterChecker();
+    showGuess();
 }
 
 document.onkeyup = function (event) {
     var userGuess = event.key;
     letterChecker(userGuess);
-    console.log(placeHolder);
     winLoss();
     display();
 }
